@@ -48,9 +48,9 @@ body {
 }
 
 .content-box {
-  background: rgba(10, 15, 40, 0.85);
-  border: 3px solid #1a6bff;
-  box-shadow: 0 0 25px #1a6bff88;
+  background: rgba(30, 5, 45, 0.85);
+  border: 3px solid #b400ff;
+  box-shadow: 0 0 25px #b400ff88;
   border-radius: 20px;
   padding: 40px;
   width: 90%;
@@ -68,9 +68,9 @@ body {
 /* La sección 2 tendrá un tamaño más grande */
 .content-box.big {
   max-width: 800px;
-  background: rgba(5, 12, 50, 0.88);
-  border-color: #ffd400;
-  box-shadow: 0 0 30px #ffd400aa;
+  background: rgba(40, 0, 60, 0.88);
+  border-color: #ff00d4;
+  box-shadow: 0 0 30px #ff00d4aa;
 }
 
 /* === TITULOS === */
@@ -78,11 +78,11 @@ h2 {
   font-size: 2rem;
   color: #fff;
   margin-bottom: 20px;
-  text-shadow: 0 0 10px #1a6bff;
+  text-shadow: 0 0 10px #b400ff;
 }
 
 .highlight {
-  color: #ffd400;
+  color: #ff00d4;
 }
 
 /* === INPUT Y BOTÓN === */
@@ -90,7 +90,7 @@ input {
   width: 80%;
   padding: 10px;
   border-radius: 10px;
-  border: 2px solid #ffd400;
+  border: 2px solid #ff00d4;
   margin: 15px 0;
   font-size: 1rem;
   text-align: center;
@@ -99,7 +99,7 @@ input {
 }
 
 button {
-  background: linear-gradient(90deg, #003cff, #1a6bff);
+  background: linear-gradient(90deg, #7b00ff, #c000ff);
   color: white;
   font-size: 1.2rem;
   border: none;
@@ -111,7 +111,7 @@ button {
 
 button:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 15px #ffd400;
+  box-shadow: 0 0 15px #ff00d4;
 }
 
 /* === CARTAS === */
@@ -124,7 +124,7 @@ button:hover {
 }
 
 .card {
-  border: 3px solid #1a6bff;
+  border: 3px solid #b400ff;
   border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
@@ -139,19 +139,19 @@ button:hover {
 
 .card:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 20px #ffd400aa;
+  box-shadow: 0 0 20px #ff00d4aa;
 }
 
 .card.selected {
-  border-color: #ffd400;
-  box-shadow: 0 0 25px #ffd400;
+  border-color: #ff00d4;
+  box-shadow: 0 0 25px #ff00d4;
 }
 
 /* === SPINNER === */
 .spinner {
   margin: 20px auto;
   border: 6px solid rgba(255, 255, 255, 0.2);
-  border-top: 6px solid #ffd400;
+  border-top: 6px solid #ff00d4;
   border-radius: 50%;
   width: 64px;
   height: 64px;

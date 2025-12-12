@@ -85,7 +85,7 @@ function goToSearching() {
       }
       finalCards.appendChild(cardDiv);
     });
-
+    
     launchConfetti();
   }, 1500);
 }
