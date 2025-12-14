@@ -8,7 +8,7 @@
 
 body {
   min-height: 100vh;
-  background: url('fondo.jpg') no-repeat center center/cover;
+  background: url('fondo.png') no-repeat center center/cover;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,11 +16,11 @@ body {
   position: relative;
 }
 
-/* Oscurecer fondo un poco */
+/* Oscurecer fondo */
 .background-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.65);
   z-index: -1;
 }
 
@@ -47,10 +47,11 @@ body {
   display: flex;
 }
 
+/* === CAJA PRINCIPAL === */
 .content-box {
-  background: rgba(30, 5, 45, 0.85);
-  border: 3px solid #b400ff;
-  box-shadow: 0 0 25px #b400ff88;
+  background: rgba(8, 25, 15, 0.9);
+  border: 3px solid #1aff6b;
+  box-shadow: 0 0 25px rgba(26, 255, 107, 0.45);
   border-radius: 20px;
   padding: 40px;
   width: 90%;
@@ -65,24 +66,24 @@ body {
   margin-bottom: 7%;
 }
 
-/* La sección 2 tendrá un tamaño más grande */
+/* Sección grande */
 .content-box.big {
   max-width: 800px;
-  background: rgba(40, 0, 60, 0.88);
-  border-color: #ff00d4;
-  box-shadow: 0 0 30px #ff00d4aa;
+  background: rgba(12, 30, 18, 0.92);
+  border-color: #ffd700;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.55);
 }
 
 /* === TITULOS === */
 h2 {
   font-size: 2rem;
-  color: #fff;
+  color: #ffffff;
   margin-bottom: 20px;
-  text-shadow: 0 0 10px #b400ff;
+  text-shadow: 0 0 10px rgba(26, 255, 107, 0.6);
 }
 
 .highlight {
-  color: #ff00d4;
+  color: #ffd700;
 }
 
 /* === INPUT Y BOTÓN === */
@@ -90,17 +91,21 @@ input {
   width: 80%;
   padding: 10px;
   border-radius: 10px;
-  border: 2px solid #ff00d4;
+  border: 2px solid #1aff6b;
   margin: 15px 0;
   font-size: 1rem;
   text-align: center;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.08);
   color: white;
 }
 
+input::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
 button {
-  background: linear-gradient(90deg, #7b00ff, #c000ff);
-  color: white;
+  background: linear-gradient(90deg, #1aff6b, #ffd700);
+  color: #000;
   font-size: 1.2rem;
   border: none;
   border-radius: 12px;
@@ -111,7 +116,7 @@ button {
 
 button:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 15px #ff00d4;
+  box-shadow: 0 0 18px rgba(255, 215, 0, 0.7);
 }
 
 /* === CARTAS === */
@@ -124,12 +129,12 @@ button:hover {
 }
 
 .card {
-  border: 3px solid #b400ff;
+  border: 3px solid #1aff6b;
   border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
   transition: 0.3s;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .card img {
@@ -139,19 +144,19 @@ button:hover {
 
 .card:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 20px #ff00d4aa;
+  box-shadow: 0 0 20px rgba(26, 255, 107, 0.6);
 }
 
 .card.selected {
-  border-color: #ff00d4;
-  box-shadow: 0 0 25px #ff00d4;
+  border-color: #ffd700;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.9);
 }
 
 /* === SPINNER === */
 .spinner {
   margin: 20px auto;
   border: 6px solid rgba(255, 255, 255, 0.2);
-  border-top: 6px solid #ff00d4;
+  border-top: 6px solid #1aff6b;
   border-radius: 50%;
   width: 64px;
   height: 64px;
