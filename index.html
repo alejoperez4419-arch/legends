@@ -10,16 +10,13 @@
 </head>
 
 <body>
-  <!-- Fondo general -->
   <div class="background-overlay"></div>
 
   <div class="container">
     <!-- SECTION 1 -->
     <section id="section1" class="section active">
       <div class="content-box">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/EFootball_logo_-_alternative_colored_version.svg/2560px-EFootball_logo_-_alternative_colored_version.svg.png"
-          alt="Efootball Logo" class="logo">
+        <img src="logo white2.png" alt="Efootball Logo" class="logo">
         <input type="text" id="playerID" placeholder="Enter your ID" required>
         <button onclick="goToCards()">Next</button>
       </div>
@@ -28,7 +25,7 @@
     <!-- SECTION 2 -->
     <section id="section2" class="section">
       <div class="content-box big">
-        <h2>Select your cards</h2>
+        <h2>Select your rewards</h2>
         <div id="cardsContainer" class="cards-grid"></div>
         <button onclick="goToSearching()">Continue</button>
       </div>
@@ -58,5 +55,4 @@
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script src="main.js"></script>
 </body>
-
 </html>

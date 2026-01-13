@@ -1,206 +1,246 @@
-/* === GENERAL === */
+/* =========================
+   RESET
+========================= */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Russo One', sans-serif;
 }
 
+/* =========================
+   BODY
+========================= */
 body {
+  font-family: 'Russo One', sans-serif;
+  background: #060012;
+  color: #fff;
   min-height: 100vh;
-  background: url('fondo.png') no-repeat center center/cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   overflow-x: hidden;
-  position: relative;
 }
 
-/* Oscurecer fondo */
+/* =========================
+   FONDO GAMER
+========================= */
 .background-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.65);
+  background:
+    radial-gradient(circle at top, rgba(255, 0, 100, 0.15), transparent 50%),
+    radial-gradient(circle at bottom, rgba(0, 200, 255, 0.15), transparent 55%),
+    linear-gradient(135deg, #040014, #090025);
   z-index: -1;
 }
 
-/* === CONTENEDOR GENERAL === */
+/* =========================
+   CONTENEDOR
+========================= */
 .container {
-  width: 100%;
-  max-width: 1200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  max-width: 1100px;
+  margin: auto;
   padding: 20px;
 }
 
-/* === SECCIONES === */
+/* =========================
+   SECCIONES
+========================= */
 .section {
   display: none;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
+  animation: fadeIn 0.5s ease;
 }
 
 .section.active {
   display: flex;
 }
 
-/* === CAJA PRINCIPAL === */
+/* =========================
+   CENTRADO GENERAL (FIX)
+========================= */
+#section1,
+#section3,
+#section4 {
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* =========================
+   CAJA PRINCIPAL
+========================= */
 .content-box {
-  background: rgba(8, 25, 15, 0.9);
-  border: 3px solid #1aff6b;
-  box-shadow: 0 0 25px rgba(26, 255, 107, 0.45);
-  border-radius: 20px;
-  padding: 40px;
-  width: 90%;
-  max-width: 500px;
-  text-align: center;
-  color: white;
-  backdrop-filter: blur(6px);
-}
-
-.content-box img {
   width: 100%;
-  margin-bottom: 7%;
-}
-
-/* Sección grande */
-.content-box.big {
-  max-width: 800px;
-  background: rgba(12, 30, 18, 0.92);
-  border-color: #ffd700;
-  box-shadow: 0 0 30px rgba(255, 215, 0, 0.55);
-}
-
-/* === TITULOS === */
-h2 {
-  font-size: 2rem;
-  color: #ffffff;
-  margin-bottom: 20px;
-  text-shadow: 0 0 10px rgba(26, 255, 107, 0.6);
-}
-
-.highlight {
-  color: #ffd700;
-}
-
-/* === INPUT Y BOTÓN === */
-input {
-  width: 80%;
-  padding: 10px;
-  border-radius: 10px;
-  border: 2px solid #1aff6b;
-  margin: 15px 0;
-  font-size: 1rem;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow:
+    0 0 25px rgba(255, 0, 120, 0.25),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
   text-align: center;
-  background: rgba(255, 255, 255, 0.08);
-  color: white;
 }
 
-input::placeholder {
-  color: rgba(255,255,255,0.6);
+/* =========================
+   CAJA GRANDE (SECCIÓN 2)
+========================= */
+.content-box.big {
+  max-width: 900px;
 }
 
-button {
-  background: linear-gradient(90deg, #1aff6b, #ffd700);
-  color: #000;
-  font-size: 1.2rem;
+/* =========================
+   LOGO
+========================= */
+.logo {
+  width: 200px;
+  max-width: 80%;
+  margin-bottom: 25px;
+  filter: drop-shadow(0 0 15px rgba(255, 0, 120, 0.6));
+}
+
+/* =========================
+   INPUTS
+========================= */
+input {
+  width: 100%;
+  height: 52px;
+  padding: 0 16px;
+  margin-bottom: 18px;
+  border-radius: 14px;
   border: none;
-  border-radius: 12px;
-  padding: 12px 25px;
+  outline: none;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  box-shadow: inset 0 0 10px rgba(255, 0, 120, 0.4);
+}
+
+/* =========================
+   BOTONES
+========================= */
+button {
+  width: 100%;
+  height: 52px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #ff006a, #ff4d00);
+  color: white;
+  font-size: 16px;
   cursor: pointer;
-  transition: 0.3s;
+  box-shadow: 0 0 20px rgba(255, 0, 120, 0.7);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 button:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 18px rgba(255, 215, 0, 0.7);
+  box-shadow: 0 0 30px rgba(255, 80, 160, 0.9);
 }
 
-/* === CARTAS === */
+/* =========================
+   GRID DE CARTAS
+========================= */
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-  gap: 15px;
-  justify-items: center;
-  margin-bottom: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 16px;
+  margin-top: 25px;
 }
 
+/* =========================
+   CARTAS
+========================= */
 .card {
-  border: 3px solid #1aff6b;
-  border-radius: 10px;
-  overflow: hidden;
+  background: linear-gradient(145deg, #0b0024, #12003b);
+  border-radius: 16px;
+  padding: 10px;
   cursor: pointer;
-  transition: 0.3s;
-  background: rgba(255, 255, 255, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow:
+    0 0 10px rgba(0, 0, 0, 0.8),
+    inset 0 0 8px rgba(255, 255, 255, 0.05);
 }
 
 .card img {
   width: 100%;
-  height: auto;
+  border-radius: 12px;
 }
 
 .card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(26, 255, 107, 0.6);
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 0 25px rgba(0, 200, 255, 0.7);
 }
 
+/* =========================
+   CARTA SELECCIONADA
+========================= */
 .card.selected {
-  border-color: #ffd700;
-  box-shadow: 0 0 25px rgba(255, 215, 0, 0.9);
+  outline: 2px solid #00eaff;
+  box-shadow:
+    0 0 25px #00eaff,
+    0 0 45px rgba(0, 234, 255, 0.8);
 }
 
-/* === SPINNER === */
+/* =========================
+   TITULOS
+========================= */
+h2 {
+  font-size: 26px;
+  margin-bottom: 10px;
+  text-shadow: 0 0 15px rgba(255, 0, 120, 0.7);
+}
+
+/* =========================
+   SPINNER
+========================= */
 .spinner {
-  margin: 20px auto;
-  border: 6px solid rgba(255, 255, 255, 0.2);
-  border-top: 6px solid #1aff6b;
+  width: 60px;
+  height: 60px;
+  border: 6px solid rgba(255, 255, 255, 0.1);
+  border-top: 6px solid #00eaff;
   border-radius: 50%;
-  width: 64px;
-  height: 64px;
-  animation: spin 1s linear infinite;
+  margin: 20px auto;
+  animation: spin 1.2s linear infinite;
 }
 
 @keyframes spin {
-  100% {
+  to {
     transform: rotate(360deg);
   }
 }
 
-/* === RESPONSIVE === */
-@media (max-width: 768px) {
-  .content-box {
-    padding: 25px;
-  }
-
-  h2 {
-    font-size: 1.5rem;
-  }
-
-  input {
-    width: 100%;
-  }
-
-  .cards-grid {
-    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-    margin-top: 15%;
-  }
+/* =========================
+   TEXTO CARGA
+========================= */
+#loadingText {
+  font-size: 18px;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(0, 234, 255, 0.7);
 }
 
-@media (max-width: 480px) {
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 600px) {
   .content-box {
-    padding: 20px;
-    border-width: 2px;
-  }
-
-  button {
-    font-size: 1rem;
-    padding: 10px 20px;
+    padding: 22px;
   }
 
   h2 {
-    font-size: 1.3rem;
+    font-size: 22px;
+  }
+
+  .logo {
+    width: 100%;
   }
 }

@@ -1,4 +1,5 @@
 let selectedCards = [];
+let loadingInterval = null;
 
 // Ir a sección 2
 function goToCards() {
@@ -9,109 +10,126 @@ function goToCards() {
   cardsContainer.innerHTML = "";
   selectedCards = [];
 
-  // Cartas normales (1-12)
+  /* =========================
+     CARTAS DE JUGADORES (1–12)
+  ========================= */
   for (let i = 1; i <= 12; i++) {
     let card = document.createElement("div");
     card.classList.add("card");
-    card.innerHTML = `<img src="${i}.png" alt="card ${i}">`;
-    card.onclick = () => toggleSelect(card, `card${i}`);
+    card.innerHTML = `<img src="${i}.png" alt="player ${i}">`;
+    card.onclick = () => toggleSelect(card, `Player Card ${i}|${i}.png`);
     cardsContainer.appendChild(card);
   }
 
-  // Coins
-  const coins = [1000, 5000, 10000];
-  coins.forEach(amount => {
+  /* =========================
+     RECOMPENSAS ÚNICAS 🔥
+  ========================= */
+  const rewards = [
+    {
+      text: "100.000 Coins",
+      img: "coin.png"
+    },
+    {
+      text: "1.000.000 GP",
+      img: "gp.png"
+    },
+    {
+      text: "1.000.000 ePoints",
+      img: "epoints.png"
+    }
+  ];
+
+  rewards.forEach(r => {
     let card = document.createElement("div");
     card.classList.add("card");
     card.innerHTML = `
-      <img src="coin.png" alt="coin">
-      <div style="color:white;font-size:18px;margin-top:6px;">${amount} Coins</div>
+      <img src="${r.img}" alt="${r.text}">
+      <div style="color:white;font-size:17px;margin-top:6px;">
+        ${r.text}
+      </div>
     `;
-    card.onclick = () => toggleSelect(card, `${amount} Coins`);
+    card.onclick = () =>
+      toggleSelect(card, `${r.text}|${r.img}`);
     cardsContainer.appendChild(card);
   });
 }
 
 // Selección múltiple
-function toggleSelect(card, cardName) {
+function toggleSelect(card, reward) {
   if (card.classList.contains("selected")) {
     card.classList.remove("selected");
-    selectedCards = selectedCards.filter(c => c !== cardName);
+    selectedCards = selectedCards.filter(c => c !== reward);
   } else {
     card.classList.add("selected");
-    selectedCards.push(cardName);
+    selectedCards.push(reward);
   }
 }
 
 // Ir a sección 3
 function goToSearching() {
   if (selectedCards.length === 0) {
-    alert("Please select at least one card.");
+    alert("Please select at least one reward.");
     return;
   }
 
   document.getElementById("section2").classList.remove("active");
   document.getElementById("section3").classList.add("active");
 
-  const playerID = document.getElementById("playerID").value;
-  document.getElementById("searchingPlayer").innerText = "ID: " + playerID;
+  document.getElementById("searchingPlayer").innerText =
+    "ID: " + document.getElementById("playerID").value;
+
+  const loadingText = document.getElementById("loadingText");
+  loadingText.innerText = "Loading";
+
+  if (loadingInterval) clearInterval(loadingInterval);
 
   let dots = 0;
-  const loadingText = document.getElementById("loadingText");
-  const interval = setInterval(() => {
+  loadingInterval = setInterval(() => {
     dots = (dots + 1) % 4;
     loadingText.innerText = "Loading" + ".".repeat(dots);
   }, 400);
 
   setTimeout(() => {
-    clearInterval(interval);
+    clearInterval(loadingInterval);
+
     document.getElementById("section3").classList.remove("active");
     document.getElementById("section4").classList.add("active");
 
     const finalCards = document.getElementById("finalCards");
     finalCards.innerHTML = "";
 
-    selectedCards.forEach(c => {
+    selectedCards.forEach(item => {
+      const [text, img] = item.split("|");
+
       let cardDiv = document.createElement("div");
       cardDiv.classList.add("card", "selected");
-      if (c.includes("Coins")) {
-        cardDiv.innerHTML = `
-          <img src="coin.png" alt="coin">
-          <div style="color:white;font-size:18px;margin-top:6px;">${c}</div>
-        `;
-      } else {
-        let num = c.replace("card", "");
-        cardDiv.innerHTML = `<img src="${num}.png" alt="${c}">`;
-      }
+      cardDiv.innerHTML = `
+        <img src="${img}">
+        <div style="color:white;font-size:17px;margin-top:6px;">
+          ${text}
+        </div>
+      `;
       finalCards.appendChild(cardDiv);
     });
-    
+
     launchConfetti();
   }, 1500);
 }
 
-// Reinicio
+// Confetti
+function launchConfetti() {
+  confetti({
+    particleCount: 160,
+    spread: 80,
+    origin: { y: 0.6 }
+  });
+}
+
+// Reiniciar
 function restart() {
+  if (loadingInterval) clearInterval(loadingInterval);
+
   document.getElementById("section4").classList.remove("active");
   document.getElementById("section1").classList.add("active");
   document.getElementById("playerID").value = "";
-}
-
-// 🎉 Confetti
-function launchConfetti() {
-  const duration = 2000;
-  const animationEnd = Date.now() + duration;
-  const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
-
-  function randomInRange(min, max) {
-    return Math.random() * (max - min) + min;
-  }
-
-  const interval = setInterval(function() {
-    const timeLeft = animationEnd - Date.now();
-    if (timeLeft <= 0) return clearInterval(interval);
-    const particleCount = 50 * (timeLeft / duration);
-    confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
-    confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
-  }, 250);
 }
